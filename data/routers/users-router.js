@@ -9,7 +9,7 @@ const sendUserError = (status, message, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const users = await userDb.find(req.query);
+    const users = await userDb.get();
     res.status(200).json(users)
   } catch (err) {sendUserError(500, 'The post with the specified ID does not exist.', err)}
 });
