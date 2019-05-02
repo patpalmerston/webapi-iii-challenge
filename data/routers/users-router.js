@@ -65,4 +65,19 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+
+// works in browser but not in Postman
+router.get('/posts/:userId', (req, res) => {
+  const { userId } = req.params;
+  userDb.getUserPosts(userId)
+  .then(userPost => {
+    if (userPost === 0) {
+      return sendUserError(404, 'User has no posts', res);
+    }
+    res.json(userPost)
+  })
+  .catch(err => {
+    return sendUserError(500, 'Database Failure', err)
+  })
+});
 module.exports = router;
