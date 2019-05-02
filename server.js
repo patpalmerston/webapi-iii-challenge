@@ -33,4 +33,15 @@ server.get('/', (req, res) => {
   `);
 });
 
+// function userName(req, res, next) {
+//     const capitalName = req.headers.name.charAt(0).toUpperCase().slice(1);
+//     if (capitalName) {
+//       next();
+//     } else {
+//       res.status(401).json({ message: 'Name is not Capitalized!' })
+//     }
+    
+//   }
+
+
 module.exports = server;
